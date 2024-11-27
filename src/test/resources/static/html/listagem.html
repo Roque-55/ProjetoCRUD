@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/listagem.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <img src="/src/main/resources/icons/LogoCompacto.svg" alt="LogoCompacto" width="38" height="36">
+            <nav class="menu">
+                <ul>
+                    <li><img src="/src/main/resources/icons/Usuarios.svg" alt="Usuarios" width="20" height="18"></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <header class="header">
+                <h1>Lista de clientes</h1>
+            </header>
+
+            <div class="listagembolada">
+                <div class="actions">
+                    <div class="barra-pesquisa">
+                        <img src="/src/main/resources/icons/Lupa.svg" alt="Lupa" width="18.5" height="18.5">
+                        <input type="text" placeholder="Pesquisar usuário">
+                    </div>
+                    <button class="filter-btn"><img src="/src/main/resources/icons/Filtro.svg" alt="Filtro" width="18.5" height="18.5">Filtrar</button>
+                    <button class="add-btn"><img src="/src/main/resources/icons/Mais.svg" alt="Mais" width="18" height="18">Adicionar</button>
+                </div>
+
+                <div class="alista">
+                    <!-- Tabela de clientes -->
+            <section class="table-container">
+                <table>
+                    <thead>
+                        <tr class="linha-coluna">                         
+                            <th class="cln-nome">Nome</th>
+                            <th class="cln-cpf">CPF</th>
+                            <th class="cln-data">Data de solicitação</th> 
+                            <th class="cln-acoes">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                                <td class="cln-nome">Roque o brabo</td>
+                                <td class="cln-cpf">123.456.789-00</td>
+                                <td class="cln-data">01/11/2024</td>                                
+                                                        
+                            <td class="acoes">
+                                <button class="delete-btn"><img src="/src/main/resources/icons/Lixo.svg" alt="Lixo" width="20" height="20"></button>
+                                <button class="view-btn"><img src="/src/main/resources/icons/Olho.svg" alt="Olho" width="20" height="15"></button>
+                            </td>
+                        </tr>
+                        <!-- Repita as linhas acima conforme necessário -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Paginação -->
+            <footer class="pagination">
+                <nav>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    ...
+                    <button>15</button>
+                </nav>
+                <span>Exibindo x de y</span>
+            </footer>
+
+                </div>
+
+
+            </div>            
+        </main>
+    </div>
+</body>
+</html>

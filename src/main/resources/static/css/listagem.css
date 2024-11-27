@@ -1,0 +1,286 @@
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    background: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* Conteúdo principal */
+.content {
+    margin: 0px 30px 0px 12px;
+    width: 100%;
+    height: 96%;
+    padding: 18px 0px 18px 115px;
+    flex-direction: column;
+}
+
+.listagembolada{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    align-self: stretch;
+    padding-bottom: 20px;
+}
+
+.alista{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    align-self: stretch;
+    height: 100%;
+}
+
+.header {
+
+    align-self: stretch;
+}
+
+.actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    display: flex;
+    gap: 10px;
+}
+
+.table-container{
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+thead{
+    width: 100%;
+}
+
+tbody{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+thead th {
+    color: #747373;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+}
+
+.cln-nome{
+    width: 250px;
+}
+
+.cln-id{
+    width: 50px;
+}
+
+.cln-cpf{
+    width: 200px;
+}
+
+.cln-email{
+    width: 250px;
+}
+
+.cln-acoes{
+    padding-right: 55px;
+    display: flex;
+    flex: 1 0 0;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.linha-coluna{
+    display: flex;
+    padding: 5px 20px;
+    gap: 30px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.colunas-celulas{
+    display: flex;
+    gap: 30px;
+    flex: 1 0 0;
+}
+
+tbody td {
+    color: #2D2D2D;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.acoes{
+    display: flex;
+    flex: 1 0 0;
+    width: 150px;
+    height: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding-right: 40px;
+}
+
+tbody tr{
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+tbody tr:hover {
+    background-color: #0000000d;
+}
+
+h1{
+    color: #01497C;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.barra-pesquisa{
+    display: flex;
+    width: 350px;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+input{
+    flex: 1 0 0;
+    border: none;
+    color: #747373;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+input::placeholder{
+    color: #D1D0D0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+input:focus{
+    outline: none;
+    pointer-events: none;
+}
+
+span{
+    color: #747373;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.switch-btn{
+    display: flex;
+    height: 22px;
+    width: 36px;
+    padding: 3px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 1000px;
+    background: #A2A2A2;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.switch-btn.inactive{
+    background: #A2A2A2;
+}
+
+.switch-btn.active{
+    background: #008000;
+}
+
+.switch-btn:focus{
+    outline: none;
+}
+
+.bolaSwitch{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+    transform: translateX(1px);
+}
+
+.switch-btn.active .bolaSwitch{
+    transform: translateX(13px);
+}
+
+.delete-btn{
+    border-radius: 100px;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.delete-btn:hover{
+    background: #0000000d;
+}
+
+.view-btn{
+    border-radius: 100px;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.view-btn:hover{
+    background: #0000000d;
+}

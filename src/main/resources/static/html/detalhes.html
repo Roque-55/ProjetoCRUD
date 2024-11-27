@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes de Cliente</title>
+    <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/detalhes.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+<div class="modal-background hidden" id="md_sair">
+    <div class="modal">
+        <div class="modal-head"><la>Sair da conta?</la></div>
+        <div class="modal-body"><la>Tem certeza que deseja sair da conta?</la></div>
+        <div class="modal-footer">
+            <button class="btnVazadoVermelho" id="btnCancelarSair">Cancelar</button>
+            <button class="btnFullVermelho" id="btnSair">Sair</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdEditarDados">
+    <div class="modalEditar">
+        <div class="modal-head"><la>Editar cartão</la></div>
+        <div class="modal-bodyEditar">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Nome">
+            </div>
+            <div>
+                <label for="dataNascimento">Data de nascimento</label>
+                <input type="date" id="dataNascimento" placeholder="Data de nascimento">
+            </div>
+            <div>
+                <label for="cpf">Cpf</label>
+                <input type="text" id="cpf" placeholder="Cpf" maxlength="11">
+            </div>
+            <div>
+                <label for="genero">Gênero</label>
+                <select id="genero">
+                    <option value="Feminino">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="E-mail">
+            </div>
+            <div>
+                <label for="ranking">Ranking</label>
+                <input type="number" id="ranking" placeholder="Ranking">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btnVazadoAzul" id="btnCancelarEditarDados">Cancelar</button>
+            <button class="btnFullAzul" id="btnEditarDados">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdAdicioanarCartao">
+    <div class="modalEditar">
+        <div class="modal-head"><la>Adicionar cartão</la></div>
+        <div class="modal-bodyEditar">
+            <div>
+                <label for="nomeImpresso">Nome impresso</label>
+                <input type="text" id="nomeImpresso" placeholder="Nome impresso">
+            </div>
+            <div>
+                <label for="numeroCartao">Numero cartao</label>
+                <input type="text" id="numeroCartao" placeholder="Número do cartão">
+            </div>
+            <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="CVV">
+            </div>
+            <div>
+                <label for="bandeira">Bandeira</label>
+                <select id="bandeira">
+                    <option value="VISA">VISA</option>
+                    <option value="MASTERCARD">MasterCard</option>
+                    <option value="AMERICAN_EXPRESS">American Express</option>
+                    <option value="DISCOVER">Discover</option>
+                    <option value="DINERS_CLUB">Diners Club</option>
+                    <option value="JCB">JCB</option>
+                    <option value="Outras">Outras</option>
+                </select>
+            </div></div>
+        <div class="modal-footer">
+            <button class="btnVazadoAzul" id="btnCancelarAdicionarCartao">Cancelar</button>
+            <button class="btnFullAzul" id="btnAdicionarCartao">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdExcluirCartao">
+    <div class="modal">
+        <div class="modal-head"><la>Excluir cartão?</la></div>
+        <div class="modal-body"><la>Tem certeza que deseja excluir o cartão?</la></div>
+        <div class="modal-footer">
+            <button class="btnVazadoVermelho" id="btnCancelarExcluirCartao">Cancelar</button>
+            <button class="btnFullVermelho" id="btnExcluirCartao">Excluir</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdAdicionarEndereco">
+    <div class="modalEditar">
+        <div class="modal-head"><la>Adicionar endereco</la></div>
+        <div class="modal-bodyEditar">
+            <div>
+                <label for="nApelido">Apelido</label>
+                <input type="text" id="nApelido" placeholder="Apelido">
+            </div>
+            <div>
+                <label for="nCep">Cep</label>
+                <input type="text" id="nCep" placeholder="Cep" maxlength="8">
+            </div>
+            <div>
+                <label for="nTipoEndereco">Tipo de Endereço</label>
+                <select id="nTipoEndereco">
+                    <option value="Residencial">Residencial</option>
+                    <option value="Cobranca">Cobrança</option>
+                    <option value="Entrega">Entrega</option>
+                </select>
+            </div>
+            <div>
+                <label for="nTipoResidencia">Tipo de residencia</label>
+                <select id="nTipoResidencia">
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="nTipoLogradouro">Tipo de logradouro</label>
+                <select id="nTipoLogradouro">
+                    <option value="Rua">Rua</option>
+                    <option value="Avenida">Avenida</option>
+                    <option value="Travessa">Travessa</option>
+                    <option value="Alameda">Alameda</option>
+                    <option value="Estrada">Estrada</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="nLogradouro">Logradouro</label>
+                <input type="text" id="nLogradouro" placeholder="Logradouro">
+            </div>
+            <div>
+                <label for="nNumero">Número</label>
+                <input type="text" id="nNumero" placeholder="Número">
+            </div>
+            <div>
+                <label for="nBairro">Bairro</label>
+                <input type="text" id="nBairro" placeholder="Bairro">
+            </div>
+            <div>
+                <label for="nPais">Pais</label>
+                <select id="nPais"></select>
+            </div>
+            <div>
+                <label for="nEstado">Estado</label>
+                <select id="nEstado"></select>
+            </div>
+            <div>
+                <label for="nCidade">Cidade</label>
+                <select id="nCidade"></select>
+            </div>
+            <div>
+                <label for="nObservacoes">Observações</label>
+                <input type="text" id="nObservacoes" placeholder="Observações">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btnVazadoAzul" id="btnCancelarCadastrarEndereco">Cancelar</button>
+            <button class="btnFullAzul" id="btnCadastrarEndereco">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdEditarEndereco">
+    <div class="modalEditar">
+        <div class="modal-head"><la>Editar endereco</la></div>
+        <div class="modal-bodyEditar">
+            <div>
+                <label for="apelido">Apelido</label>
+                <input type="text" id="apelido" placeholder="Apelido">
+            </div>
+            <div>
+                <label for="cep">Cep</label>
+                <input type="text" id="cep" placeholder="Cep" maxlength="8">
+            </div>
+            <div>
+                <label for="tipoEndereco">Tipo de Endereço</label>
+                <select id="tipoEndereco">
+                    <option value="Residencial">Residencial</option>
+                    <option value="Cobranca">Cobrança</option>
+                    <option value="Entrega">Entrega</option>
+                </select>
+            </div>
+            <div>
+                <label for="tipoResidencia">Tipo de residencia</label>
+                <select id="tipoResidencia">
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="tipoLogradouro">Tipo de logradouro</label>
+                <select id="tipoLogradouro">
+                    <option value="Rua">Rua</option>
+                    <option value="Avenida">Avenida</option>
+                    <option value="Travessa">Travessa</option>
+                    <option value="Alameda">Alameda</option>
+                    <option value="Estrada">Estrada</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="logradouro">Logradouro</label>
+                <input type="text" id="logradouro" placeholder="Logradouro">
+            </div>
+            <div>
+                <label for="numero">Número</label>
+                <input type="text" id="numero" placeholder="Número">
+            </div>
+            <div>
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" placeholder="Bairro">
+            </div>
+            <div>
+                <label for="pais">Pais</label>
+                <select id="pais"></select>
+            </div>
+            <div>
+                <label for="estado">Estado</label>
+                <select id="estado"></select>
+            </div>
+            <div>
+                <label for="cidade">Cidade</label>
+                <select id="cidade"></select>
+            </div>
+            <div>
+                <label for="observacoes">Observações</label>
+                <input type="text" id="observacoes" placeholder="Observações">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btnVazadoAzul" id="btnCancelarEditarEndereco">Cancelar</button>
+            <button class="btnFullAzul" id="btnEditarEndereco">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-background hidden" id="mdExcluirEndereco">
+    <div class="modal">
+        <div class="modal-head"><la>Excluir endereço?</la></div>
+        <div class="modal-body"><la>Tem certeza que deseja excluir o endereço?</la></div>
+        <div class="modal-footer">
+            <button class="btnVazadoVermelho" id="btnCancelarExcluirEndereco">Cancelar</button>
+            <button class="btnFullVermelho" id="btnExcluirEndereco">Excluir</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <aside class="sidebar" id="menuLateral">
+        <div class="logo">
+            <img src="../icons/LogoX.svg" alt="LogoX" height="36" id="logoX">
+            <img class="logoNome" src="../icons/LogoNome.svg" alt="LogoNome" height="16" id="logoNome">
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li class="liSelecionado">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                        <path d="M21 18.981V16.9853C21.0007 16.1005 20.7069 15.2407 20.1648 14.5414C19.6228 13.8422 18.8633 13.3433 18.0063 13.1234M14.5137 1.30835C15.2519 1.6059 15.8844 2.11735 16.3298 2.77705C16.7752 3.43676 17.0132 4.21454 17.0132 5.0105C17.0132 5.80647 16.7752 6.58425 16.3298 7.24395C15.8844 7.90366 15.2519 8.41511 14.5137 8.71266M16.0105 18.981C16.1189 17.7984 16.0175 16.6059 15.7111 15.4584C15.3018 14.4802 14.524 13.7024 13.5457 13.2931C12.3983 12.9867 11.2058 12.8853 10.0231 12.9937H7.02946C5.8468 12.8853 4.65426 12.9867 3.50685 13.2931C2.52862 13.7024 1.75085 14.4802 1.3415 15.4584C1.03509 16.6059 0.933697 17.7984 1.04208 18.981M12.5179 5.0105C12.5179 5.79997 12.2838 6.57171 11.8452 7.22812C11.4066 7.88453 10.7832 8.39617 10.0538 8.69829C9.32447 9.0004 8.52184 9.07936 7.74755 8.92535C6.97326 8.77133 6.26211 8.39116 5.70388 7.83292C5.14565 7.27469 4.76547 6.56355 4.61146 5.78926C4.45744 5.01497 4.53641 4.21233 4.83852 3.48296C5.14063 2.7536 5.65227 2.13018 6.30869 1.69157C6.9651 1.25297 7.73684 1.01892 8.5263 1.01892C9.58493 1.01892 10.6002 1.43952 11.3487 2.18809C12.0973 2.93665 12.5179 3.95187 12.5179 5.0105Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <label>Usuários</label>
+                </li>
+            </ul>
+            <li id="sair"><img src="../icons/Sair.svg" alt="Sair" width="20" height="18"><label>Sair</label></li>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <div class="cabecalho">
+            <div class="topo">
+                <div class="titulo">
+                    <button class="btnVoltar">
+                        <svg id="btnVoltar" xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+                            <path d="M9 17L1 9L9 1" stroke="#01497C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    Detalhes de cliente
+                </div>
+                <div>
+                    Id:
+                    <label id="id">id</label>
+                </div>
+            </div>
+            <div class="baixo">
+                <label class="label active" id="guiaDadosPessoais">Dados pessoais</label>
+                <label class="label" id="guiaEnderecos">Endereços</label>
+                <label class="label" id="guiaCartoes">Cartões</label>
+            </div>
+        </div>
+
+        <div class="conteudo">
+            <div class="dadosPessoais" id="dadosPessoais">
+                <div class="linha">
+                    <div class="infos">
+                        Nome
+                        <label id="lblNome">nome</label>
+                    </div>
+                    <button class="acaoBtn" id="editarDados">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <path d="M10.4712 3.60368H6.3062C5.24982 3.48501 4.18028 3.59565 3.17054 3.92798C2.6111 4.21365 2.15612 4.6686 1.87045 5.22804C1.53815 6.23779 1.42754 7.30732 1.54618 8.3637V16.6938C1.42754 17.7502 1.53815 18.8197 1.87045 19.8294C2.15612 20.3889 2.6111 20.8438 3.17054 21.1295C4.18028 21.4618 5.24982 21.5725 6.3062 21.4538H14.6363C15.6927 21.5725 16.7622 21.4618 17.7719 21.1295C18.3314 20.8438 18.7864 20.3889 19.072 19.8294C19.4043 18.8197 19.5149 17.7502 19.3963 16.6938V12.5287M7.49622 15.5038H9.15726C9.47663 15.5215 9.79699 15.5033 10.1123 15.4492C10.315 15.4008 10.5088 15.3204 10.6864 15.2112C10.9477 15.0266 11.1872 14.813 11.4005 14.5746L20.8838 5.09119C21.2783 4.69667 21.5 4.1616 21.5 3.60368C21.5 3.04575 21.2783 2.51068 20.8838 2.11616C20.4893 1.72165 19.9542 1.5 19.3963 1.5C18.8384 1.5 18.3033 1.72165 17.9088 2.11616L8.42543 11.5995C8.18692 11.8127 7.97335 12.0523 7.78878 12.3136C7.67955 12.4912 7.5992 12.6849 7.55076 12.8877C7.49673 13.203 7.47844 13.5234 7.49622 13.8427V15.5038Z" stroke="#01497C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="infos">
+                    Data de nascimento
+                    <label id="lblDataNascimento">datanascimento</label>
+                </div>
+                <div class="infos">
+                    Cpf
+                    <label id="lblCpf">cpf</label>
+                </div>
+                <div class="infos">
+                    Gênero
+                    <label id="lblGenero">genero</label>
+                </div>
+                <div class="infos">
+                    Telefone
+                    <label id="lblTelefone">telefone</label>
+                </div>
+                <div class="infos">
+                    Tipo de telefone
+                    <label id="lblTipoTelefone">tipotelefone</label>
+                </div>
+                <div class="infos">
+                    E-mail
+                    <label id="lblEmail">email</label>
+                </div>
+                <div class="infos">
+                    Ranking
+                    <label id="lblRanking">ranking</label>
+                </div>
+            </div>
+
+            <div class="enderecos hide" id="enderecos">
+                <button id="novoEndereco" class="addBtn">+ Adicionar endereço</button>
+                <div id="listaEnderecos" class="lista">
+
+                </div>
+            </div>
+
+            <div class="cartoes hide" id="cartoes">
+                <button id="novoCartao" class="addBtn">+ Adicionar cartão</button>
+                <div id="listaCartoes" class="lista">
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/componentes.js" ></script>
+<script src="../js/detalhes.js" ></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    background: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 157px);
+    height: 81px;
+    background: #FFF;
+    padding: 40px 30px 5px 127px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-content: space-between;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    color: #01497C;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.top div{
+    gap: 10px;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.btnVoltar{
+    display: flex;
+    width: 27px;
+    height: 27px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: none;
+    background: none;
+}
+
+.btnVoltar:hover{
+    background: #0000000a;
+}
+
+.baixo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.baixo label{
+    color: #747373;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.baixo label.active{
+    color: #01497C;
+    font-weight: 700;
+}
+
+.conteudo {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.dadosPessoais{
+    display: flex;
+    width: 550px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.dadosPessoais.hide{
+    display: none;
+}
+
+.dadosPessoais label{
+    color: #161616;
+    font-size: 18px;
+}
+
+.enderecos{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.enderecos.hide{
+    display: none;
+}
+
+.cartoes{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.cartoes.hide{
+    display: none;
+}
+
+.lista{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 3px;
+}
+
+.objeto{
+    display: flex;
+    width: 550px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.objeto label{
+    color: #161616;
+    font-size: 18px;
+}
+
+.linha{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.botoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.acaoBtn {
+    display: flex;
+    width: 41px;
+    height: 41px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    border: 1px solid #F1F1F1;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.acaoBtn:hover{
+    background: #0000000a;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #747373;
+    font-size: 16px;
+    flex: 1 0 0;
+}
+
+
+
+
+
+
+
